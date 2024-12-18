@@ -3,7 +3,9 @@ import React from "react";
 const App = () => {
   return (
     <main>
-      <h1 className="text-5xl text-cyan font-black">wlecome to zentry</h1>
+      <h1 className="text-5xl text-violet-300 font-bold">
+        welcome to zentry that we have created
+      </h1>
     </main>
   );
 };
