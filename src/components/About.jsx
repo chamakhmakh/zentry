@@ -23,6 +23,26 @@ const About = () => {
       height: "100vh",
       borderRadius: 0,
     });
+
+    gsap.fromTo(
+      ".about-image img",
+      {
+        y: 100,
+        opacity: 0,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1.5,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".about-image",
+          start: "top bottom",
+          end: "center center",
+          scrub: 0.5,
+        },
+      }
+    );
   });
 
   return (

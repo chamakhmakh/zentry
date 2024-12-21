@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 import Button from "./Button";
 import AnimatedTitle from "./AnimatedTitle";
@@ -7,6 +7,36 @@ import RoundedCorners from "./RoundedCorners";
 
 const FloatingImage = () => {
   const frameRef = useRef(null);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const frameElement = frameRef.current;
+
+    gsap.fromTo(
+      frameElement,
+      {
+        opacity: 0,
+        scale: 0.8,
+      },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        delay: 0.5,
+        ease: "power2.out",
+      }
+    );
+
+    gsap.to(frameElement, {
+      y: -30,
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1,
+      },
+    });
+  }, []);
 
   const handleMouseMove = (e) => {
     const { clientX, clientY } = e;
@@ -48,6 +78,7 @@ const FloatingImage = () => {
 
   return (
     <div
+      ref={containerRef}
       id={"story" && "Prologue"}
       className="min-h-dvh w-screen bg-black text-blue-50"
     >

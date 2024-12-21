@@ -25,9 +25,9 @@ const Footer = () => {
         </p>
 
         <div className="flex justify-center gap-4 md:justify-start">
-          {socialLinks.map((link) => (
+          {socialLinks.map((link, index) => (
             <a
-              key={link}
+              key={index}
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
